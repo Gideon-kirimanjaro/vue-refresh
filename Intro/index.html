@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      {{hello}}
+
+      <input @keyup.enter="key(2)" v-model="name" />
+      <p>My name is {{name}}</p>
+      <div v-if="name=='gideon'">your name is correct</div>
+      <div v-else-if="name=='kai'">This is your kids name</div>
+      <div v-else>Those conditions are false</div>
+      <button v-on:click="showBox">Toggle</button>
+      <div v-if="boxToggle">
+        <h2>I am a box</h2>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <script>
+      let app = Vue.createApp({
+        data: function () {
+          return {
+            hello: "This is easy",
+            name: "",
+            boxToggle: false,
+          };
+        },
+        methods: {
+          showBox: function () {
+            return (this.boxToggle = !this.boxToggle);
+          },
+          key: (id) => {
+            alert(id);
+          },
+        },
+      });
+      app.mount("#app");
+    </script>
+  </body>
+</html>
